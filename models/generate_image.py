@@ -1,9 +1,11 @@
 import requests
 import base64  # <-- Add this import
-
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
 def generate_image(prompt: str):
-    API_KEY = "sk-0Qfz74Z0VeFQVVXeUTMhApsi9ufQwvUbxj14J6heDcV3auZC"
+    API_KEY = os.getenv("IMAPIKEY")
     ENGINE_ID = "stable-diffusion-v1-6"
 
 
