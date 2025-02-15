@@ -24,10 +24,14 @@ Follow these steps to set up and run the project:
 ```bash
 git clone https://github.com/your-username/x-post-trend.git
 cd x-post-trend
+```bash
+
 
 2. Install Dependencies
+```bash
 Install all the required Python packages:
 pip install -r requirements.txt
+```bash
 
 3. Install Playwright Browsers
 This project uses Playwright for browser automation. Install the required browsers:
