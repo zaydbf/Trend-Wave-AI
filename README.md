@@ -28,30 +28,39 @@ cd x-post-trend
 
 
 2. Install Dependencies
-
+```bash
 Install all the required Python packages:
 pip install -r requirements.txt
+```
 
 
 3. Install Playwright Browsers
 This project uses Playwright for browser automation. Install the required browsers:
+```bash
 playwright install
+```
 
-4. Set Up Environment Variables
+5. Set Up Environment Variables
 Create a .env file in the root directory and add the following variables:
+```bash
 APIKEY=<your-groq-api-key>
 IMAPIKEY=<your-stability-ai-api-key>
 TWITTER_USERNAME=""
 TWITTER_PASSWORD=""
+```
 
 🚀 Usage
 1. Run the Flask Server
 Start the Flask server to enable the web interface:
+```bash
 python server.py
+```
 
 3. Access the Web Interface
 Open your browser and navigate to:
+```bash
 http://127.0.0.1:5001
+```
 
 3. Update Your X Credentials
 Enter your X (Twitter) username and password in the web interface and click "Post On X the top trends now".
