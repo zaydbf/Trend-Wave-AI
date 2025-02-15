@@ -80,7 +80,7 @@ Create an image using Stability AI.
 
 Post the content to your X account.
 
-🙏 Acknowledgments  
+🙏 Acknowledgments  :  
 
 Groq AI: For providing the AI model to generate post descriptions.  
 
