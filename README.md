@@ -1,23 +1,27 @@
-🌟 X Post Trend: Automate Trend Posting on X (Twitter) 🚀
-Welcome to X Post Trend! This project allows you to automatically generate and post trending content on X (formerly Twitter) using AI. It combines the power of Groq AI, Stability AI, and Playwright to create engaging posts with images based on the latest trends.
+# 🌟 X Post Trend: Automate Trend Posting on X (Twitter) 🚀
+
+Welcome to **X Post Trend**! This project allows you to automatically generate and post trending content on X (formerly Twitter) using AI. It combines the power of **Groq AI**, **Stability AI**, and **Playwright** to create engaging posts with images based on the latest trends.
 
 Whether you're a social media manager, content creator, or just someone who loves staying on top of trends, this tool will save you time and effort while keeping your X feed fresh and relevant.
 
-✨ Features
-Trend Detection: Fetches the latest trends from TikTok Trends.
+---
 
-AI-Powered Post Generation: Uses Groq AI to generate engaging post descriptions.
+## ✨ Features
 
-AI-Generated Images: Creates unique images using Stability AI based on the post content.
+- **Trend Detection**: Fetches the latest trends from TikTok Trends.
+- **AI-Powered Post Generation**: Uses Groq AI to generate engaging post descriptions.
+- **AI-Generated Images**: Creates unique images using Stability AI based on the post content.
+- **Automated Posting**: Posts the generated content directly to your X (Twitter) account.
+- **Easy Configuration**: Update your X credentials and API keys in a simple `.env` file.
 
-Automated Posting: Posts the generated content directly to your X (Twitter) account.
+---
 
-Easy Configuration: Update your X credentials and API keys in a simple .env file.
+## 🛠️ Installation
 
-🛠️ Installation
 Follow these steps to set up and run the project:
 
-1. Clone the Repository
+### 1. Clone the Repository
+```bash
 git clone https://github.com/your-username/x-post-trend.git
 cd x-post-trend
 
