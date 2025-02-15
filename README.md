@@ -24,7 +24,7 @@ Follow these steps to set up and run the project:
 ```bash
 git clone https://github.com/your-username/x-post-trend.git
 cd x-post-trend
- ` ``` ` 
+```
 
 
 2. Install Dependencies
