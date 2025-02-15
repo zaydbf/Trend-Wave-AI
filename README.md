@@ -88,7 +88,7 @@ Stability AI: For generating stunning images.
 
 Playwright: For automating the X (Twitter) posting process.  
 
-TikTok Trends: For providing the latest trends.  
+ 
 
 💬 Feedback  
 If you have any questions, suggestions, or issues, feel free to open an issue or reach out to me at zayd.benfadhel@supcom.tn, mohamed.mdhaffar@supcom.tn, jawher.sadok@supcom.tn .  
