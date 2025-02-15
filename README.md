@@ -28,8 +28,8 @@ cd x-post-trend
 
 
 2. Install Dependencies
-```bash
 Install all the required Python packages:
+```bash
 pip install -r requirements.txt
 ```
 
