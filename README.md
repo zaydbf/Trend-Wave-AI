@@ -42,9 +42,10 @@ playwright install
 
 5. Set Up Environment Variables
 Create a .env file in the root directory and add the following variables:
+
 you can get groq API key from here : https://console.groq.com/keys .  
 you can get stable diffusion API key from here : https://platform.stability.ai/account/keys .  
-and
+
 ```bash
 APIKEY=<your-groq-api-key>
 IMAPIKEY=<your-stable-diffusion-ai-api-key>
