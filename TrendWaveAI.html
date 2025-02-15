@@ -381,10 +381,8 @@
 
             // Add button animation
             const button = document.querySelector('button');
-            button.style.transform = 'scale(0.95)';
-            setTimeout(() => {
-                button.style.transform = 'scale(1)';
-            }, 100);
+            button.disabled = true; // Disable the button
+            button.textContent = 'Posting...'; // Change button text
 
             fetch('http://127.0.0.1:5001/update-env', {
                 method: 'POST',
@@ -394,9 +392,21 @@
             .then(response => response.json())
             .then(data => {
                 showAlert(data.message, data.success);
+                
+                // Redirect to analytics.html after a successful post
+                if (data.success) {
+                    setTimeout(() => {
+                        window.location.href = 'analytics.html';
+                    }, 2000); // Redirect after 2 seconds
+                } else {
+                    button.disabled = false; // Re-enable the button on failure
+                    button.textContent = 'Generate Trendy Post'; // Reset button text
+                }
             })
             .catch(error => {
                 showAlert("Error: " + error, false);
+                button.disabled = false; // Re-enable the button on error
+                button.textContent = 'Generate Trendy Post'; // Reset button text
             });
         }
 
