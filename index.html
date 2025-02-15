@@ -3,83 +3,161 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Post On X</title>
+    <title>TrendWaveAI</title>
     <style>
         /* Global Styles */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f7fa;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+        * {
             margin: 0;
-            color: #333;
-            text-align: center;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        h1 {
-            font-size: 32px;
-            margin-bottom: 30px;
-            color: #444;
-            animation: fadeIn 1s ease-in;
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1c20 0%, #2c3e50 100%);
+            min-height: 100vh;
+            color: #fff;
+            position: relative;
+        }
+
+        /* Header Styles */
+        .header {
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #00c6ff, #0072ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Main Content */
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+            min-height: calc(100vh - 140px);
+        }
+
+        .welcome-text {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            background: linear-gradient(45deg, #00c6ff, #0072ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeIn 1.5s ease-out;
         }
 
         /* Form Container */
         .form-container {
-            background-color: #ffffff;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
             width: 100%;
-            max-width: 400px;
-            animation: slideIn 1s ease-out;
+            max-width: 450px;
+            animation: slideUp 1s ease-out;
+        }
+
+        .connect-text {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: #fff;
+            text-align: center;
         }
 
         /* Input Fields */
-        input[type="text"],
-        input[type="password"] {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 20px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 16px;
-            transition: all 0.3s ease-in-out;
+        .input-group {
+            margin-bottom: 1.5rem;
         }
 
-        input[type="text"]:focus,
-        input[type="password"]:focus {
-            border-color: #007bff;
-            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        input {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            color: #fff;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        input:focus {
             outline: none;
+            border-color: #00c6ff;
+            box-shadow: 0 0 15px rgba(0, 198, 255, 0.3);
         }
 
         /* Button */
         button {
             width: 100%;
-            padding: 12px;
-            background-color: #007bff;
+            padding: 1rem;
+            background: linear-gradient(45deg, #00c6ff, #0072ff);
             color: #fff;
-            font-size: 18px;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
+            font-size: 1.1rem;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         button:hover {
-            background-color: #0056b3;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 198, 255, 0.4);
         }
 
-        button:active {
-            transform: scale(0.98);
+        /* Alert Box */
+        .alert {
+            padding: 1rem;
+            margin-top: 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            display: none;
+            animation: fadeIn 0.3s ease-out;
         }
 
-        /* Animation Keyframes */
-        @keyframes slideIn {
+        .alert.error {
+            background: rgba(244, 67, 54, 0.2);
+            border: 1px solid #f44336;
+        }
+
+        .alert.success {
+            background: rgba(76, 175, 80, 0.2);
+            border: 1px solid #4CAF50;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
             from {
-                transform: translateY(-30px);
+                transform: translateY(30px);
                 opacity: 0;
             }
             to {
@@ -88,51 +166,91 @@
             }
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
+        /* Floating Particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
         }
 
-        /* Alert Box */
-        .alert {
-            padding: 20px;
-            margin: 20px 0;
-            background-color: #f44336;
-            color: white;
-            border-radius: 5px;
-            font-size: 16px;
-            display: none;
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 20s infinite linear;
         }
-        .alert.success {
-            background-color: #4CAF50;
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(-100vh) rotate(360deg); }
         }
     </style>
 </head>
 <body>
+    <!-- Animated background particles -->
+    <div class="particles" id="particles"></div>
 
-    <div class="form-container">
-        <h1>X Post Trend</h1>
-        <input type="text" id="username" placeholder="Username">
-        <input type="password" id="password" placeholder="Password">
-        <button onclick="updateEnv()">Post On X the top trends now</button>
-        <div id="alert-box" class="alert"></div>
-    </div>
+    <!-- Header -->
+    <header class="header">
+        <div class="brand">TrendWaveAI</div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <h1 class="welcome-text">Welcome to the Future of Social Media</h1>
+        
+        <div class="form-container">
+            <p class="connect-text">Connect your X Account</p>
+            <div class="input-group">
+                <input type="text" id="username" placeholder="Username">
+            </div>
+            <div class="input-group">
+                <input type="password" id="password" placeholder="Password">
+            </div>
+            <button onclick="updateEnv()">Generate Trendy Post</button>
+            <div id="alert-box" class="alert"></div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Your credentials are securely used only for posting. We never store your information.</p>
+        <p>© 2025 TrendWaveAI. Exploring the cosmos of social connection.</p>
+    </footer>
 
     <script>
+        // Create floating particles
+        function createParticles() {
+            const particles = document.getElementById('particles');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.top = Math.random() * 100 + 'vh';
+                particle.style.width = Math.random() * 3 + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.animationDuration = (Math.random() * 20 + 10) + 's';
+                particle.style.opacity = Math.random() * 0.5;
+                particles.appendChild(particle);
+            }
+        }
+
+        // Alert function
         function showAlert(message, isSuccess) {
             const alertBox = document.getElementById('alert-box');
             alertBox.textContent = message;
-            alertBox.className = 'alert ' + (isSuccess ? 'success' : '');
+            alertBox.className = 'alert ' + (isSuccess ? 'success' : 'error');
             alertBox.style.display = 'block';
             setTimeout(() => {
                 alertBox.style.display = 'none';
             }, 4000);
         }
 
+        // Form submission
         function updateEnv() {
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
@@ -155,7 +273,9 @@
                 showAlert("Error: " + error, false);
             });
         }
-    </script>
 
+        // Initialize particles on load
+        document.addEventListener('DOMContentLoaded', createParticles);
+    </script>
 </body>
 </html>
