@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tweet Analytics</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a1c20 0%, #2c3e50 100%);
+            min-height: 100vh;
+            color: #fff;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .success-message {
+            text-align: center;
+            padding: 2rem;
+            margin: 2rem auto;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            max-width: 600px;
+        }
+
+        .success-icon {
+            font-size: 3rem;
+            color: #0072ff;
+            margin-bottom: 1rem;
+        }
+
+        .dashboard {
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 1.5rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #0072ff;
+            margin: 0.5rem 0;
+        }
+
+        .label {
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        .trending {
+            list-style: none;
+        }
+
+        .trending li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .chart-container {
+            height: 200px;
+            margin-top: 1rem;
+        }
+
+        .market-item {
+            display: flex;
+            align-items: center;
+            margin: 1rem 0;
+            padding: 0.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+        }
+
+        .market-item img {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            margin-right: 1rem;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .success-message {
+            animation: pulse 2s infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="success-message">
+        <div class="success-icon">✓</div>
+        <h1>Operation Completed</h1>
+        <p>Your tweet has been posted successfully!</p>
+    </div>
+
+    <div class="dashboard">
+        <div class="card">
+            <div class="label">Total Reach</div>
+            <div class="stat" id="reachCount">0</div>
+            <div class="chart-container">
+                <canvas id="reachChart"></canvas>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="label">Engagement</div>
+            <div class="chart-container">
+                <canvas id="engagementChart"></canvas>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="label">Quick Stats</div>
+            <div class="stat" id="likesCount">0</div>
+            <div class="label">Likes</div>
+            <div class="stat" id="repostsCount">0</div>
+            <div class="label">Reposts</div>
+            <div class="stat" id="repliesCount">0</div>
+            <div class="label">Replies</div>
+        </div>
+
+        <div class="card">
+            <div class="label">Trending Topics</div>
+            <ul class="trending" id="trendingList">
+                <li>#ArtificialIntelligence</li>
+                <li>#WebDevelopment</li>
+                <li>#Innovation</li>
+                <li>#Technology</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <div class="label">Marketplace</div>
+            <div class="market-item">
+                <img src="/api/placeholder/50/50" alt="Product">
+                <div>
+                    <h3>Premium Analytics</h3>
+                    <p>Unlock advanced insights</p>
+                </div>
+            </div>
+            <div class="market-item">
+                <img src="/api/placeholder/50/50" alt="Product">
+                <div>
+                    <h3>Engagement Booster</h3>
+                    <p>Optimize your reach</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Animate counting up
+        function animateCount(elementId, target) {
+            let current = 0;
+            const element = document.getElementById(elementId);
+            const increment = target / 100;
+            const interval = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(interval);
+                }
+                element.textContent = Math.floor(current).toLocaleString();
+            }, 20);
+        }
+
+        // Initialize counts
+        setTimeout(() => {
+            animateCount('reachCount', 25420);
+            animateCount('likesCount', 1234);
+            animateCount('repostsCount', 456);
+            animateCount('repliesCount', 789);
+        }, 1000);
+
+        // Reach chart
+        const reachCtx = document.getElementById('reachChart').getContext('2d');
+        new Chart(reachCtx, {
+            type: 'line',
+            data: {
+                labels: ['1h', '2h', '3h', '4h', '5h', '6h'],
+                datasets: [{
+                    label: 'Reach Over Time',
+                    data: [5000, 10000, 15000, 18000, 22000, 25420],
+                    borderColor: '#0072ff',
+                    tension: 0.4,
+                    fill: true,
+                    backgroundColor: 'rgba(0, 114, 255, 0.1)'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.1)'
+                        },
+                        ticks: {
+                            color: '#888'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.1)'
+                        },
+                        ticks: {
+                            color: '#888'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Engagement chart
+        const engagementCtx = document.getElementById('engagementChart').getContext('2d');
+        new Chart(engagementCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Likes', 'Reposts', 'Replies'],
+                datasets: [{
+                    data: [1234, 456, 789],
+                    backgroundColor: [
+                        '#00ff88',
+                        '#00ccff',
+                        '#ff00cc'
+                    ]
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            color: '#0072ff'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
