@@ -1,6 +1,6 @@
-# 🌟 X Post Trend: Automate Trend Posting on X (Twitter) 🚀  
+# 🌟 Trend Wave AI: Automate Trend Posting on X (Twitter) 🚀  
 
-Welcome to **X Post Trend**! This project allows you to automatically generate and post trending content on X (formerly Twitter) using AI. It combines the power of **Groq AI**, **Stability AI**, and **Playwright** to create engaging posts with images based on the latest trends.  
+Welcome to **Trend Wave AI**! This project allows you to automatically generate and post trending content on X (formerly Twitter) using AI. It combines the power of **Groq AI**, **Stability AI**, and **Playwright** to create engaging posts with images based on the latest trends.  
 
 Whether you're a social media manager, content creator, or just someone who loves staying on top of trends, this tool will save you time and effort while keeping your X feed fresh and relevant.  
 
